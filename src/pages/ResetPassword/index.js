@@ -11,8 +11,12 @@ import Background from '~/components/Background';
 const ResetPassword = ({ navigation }) => {
 
     const passwordRef = useRef();
+    const emailRef = useRef();
+    const newPasswordRef = useRef();
 
-    const [user, setUser] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [email, setEmail] = useState('');
+    const [newPassword, setNewPassword] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState('');
 
@@ -34,23 +38,28 @@ const ResetPassword = ({ navigation }) => {
                         autoCapitalize="none" 
                         placeholder="CPF" 
                         returnKeyType="next" 
-                        onSubmitEditing={ () => passwordRef.current.focus() } 
-                        onChangeText={ text => setUser() }
+                        onSubmitEditing={ () => emailRef.current.focus() } 
+                        value={cpf}
+                        onChangeText={ setCpf}
                     />
                     <FormInput 
                         icon="email" 
                         placeholder="Digite o e-mail de sua conta" 
-                        ref={passwordRef}
-                        returnKeyType="send"
-                        onSubmitEditing={ handleSubmit }
+                        onSubmitEditing={ () => newPasswordRef.current.focus() }
+                        ref={emailRef}
+                        returnKeyType="next"
+                        value={email}
+                        onSubmitEditing={ setEmail }
                     />
                     <FormInput 
                         icon="lock-outline"
                         secureTextEntry
                         placeholder="Nova Senha" 
-                        ref={passwordRef}
-                        returnKeyType="send"
-                        onSubmitEditing={ handleSubmit }
+                        onSubmitEditing={ () => passwordRef.current.focus() }
+                        ref={newPasswordRef}
+                        value={newPassword}
+                        returnKeyType="next"
+                        onSubmitEditing={ setNewPassword }
                     />
                     <FormInput 
                         icon="lock-outline"

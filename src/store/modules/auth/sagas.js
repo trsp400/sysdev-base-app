@@ -5,25 +5,26 @@ import { Alert } from 'react-native';
 import api from '~/services/api';
 
 import {signInSuccess, signFailure} from './actions';
-import Button from '~/components/Button';
 
-export function* signIn({ payload }) {
+export function* signIn({ payload, navigation }) {
     try 
     {
         const { email, password } = payload;
+
         const response = yield call(api.post, 'sessions', {
             email,
-            password
+            password,
         });
-        
-        const [token, userLogin ] = response.data;
+
+        const { token, user } = response.data;
 
         yield put(signInSuccess(token, email))
         
 
-        // history.push('/users')
+        // navigation.navigate('/dashboard')
     } 
     catch(err) {
+        
         Alert.alert('Erro no login', 'Verifique seus dados!');
         yield put(signFailure())
     }

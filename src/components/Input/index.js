@@ -24,4 +24,4 @@ Input.defaultProps = {
 }
 
 
-export default forwardRef(Input)
+export default React.forwardRef(Input)

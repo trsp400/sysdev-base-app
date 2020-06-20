@@ -1,20 +1,17 @@
 import  React, {  forwardRef,useState, useEffect } from 'react';
 import { Image, Text, Animated, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-
-import '~/config/ReactotronConfig';
-
-import { useDispatch } from 'react-redux';
-
-import { signInRequest } from '~/store/modules/auth/actions';
-
-import logo from "~/assets/logo.png";
-
-import { Container, Form, FormInput, SubmitButton, ForgotPassword ,ForgotPasswordText } from './styles';
-
 import Background from '~/components/Background';
 
-const SignIn = ({ navigation }) => {
+import '~/config/ReactotronConfig';
+import logo from "~/assets/logo.png";
+import { Container, Form, FormInput, SubmitButton, ForgotPassword ,ForgotPasswordText } from './styles';
+
+import { put, call } from 'redux-saga/effects';
+import { useDispatch } from 'react-redux';
+import { signInRequest } from '~/store/modules/auth/actions';
+
+const SignIn = ({navigation}) => {
     const passwordRef = forwardRef();
     const dispatch = useDispatch();
 
@@ -23,11 +20,11 @@ const SignIn = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = () => {
-        setLoading(true)
-        dispatch(signInRequest(email, password), setLoading(false))
-        console.log(email)
-        console.log(password)
-                 
+
+        setLoading(true);
+        
+        dispatch( signInRequest(email, password));
+        setLoading(false);                 
     }
 
     return(      
@@ -57,7 +54,7 @@ const SignIn = ({ navigation }) => {
                             onChangeText={ setPassword }                            
                         />
                         
-                        <LinearGradient colors={['#7a1fa0', '#7542ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} ><SubmitButton loading={loading} onPress={ handleSubmit}  >Acessar</SubmitButton></LinearGradient>    
+                        <LinearGradient colors={['#7a1fa0', '#7542ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} ><SubmitButton loading={loading} onPress={handleSubmit}  >Acessar</SubmitButton></LinearGradient>    
                     </Form>
                     
                     <ForgotPassword onPress={ () => {navigation.navigate('ResetPassword'); } }>
