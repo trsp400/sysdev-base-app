@@ -9,6 +9,7 @@ export const Container = styled.View`
     justify-content: center;
     align-items: center;
     padding: 0 30px;
+    margin-bottom: -60px
 `;
 
 export const Form = styled.KeyboardAvoidingView.attrs({

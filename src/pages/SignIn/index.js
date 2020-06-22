@@ -1,14 +1,17 @@
-import  React, {  forwardRef,useState, useEffect } from 'react';
-import { Image, Text, Animated, Alert } from 'react-native';
+import  React, {  forwardRef,useState } from 'react';
+import { Image, Text, Animated } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Background from '~/components/Background';
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 import '~/config/ReactotronConfig';
 import logo from "~/assets/logo.png";
+import Sysdev from '~/components/sysdev/index';
 import { Container, Form, FormInput, SubmitButton, ForgotPassword ,ForgotPasswordText } from './styles';
 
+
 import { put, call } from 'redux-saga/effects';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signInRequest } from '~/store/modules/auth/actions';
 
 const SignIn = ({navigation}) => {
@@ -17,17 +20,16 @@ const SignIn = ({navigation}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
 
+    const loading = useSelector(state => state.auth.loading)
+    // const [loading, setLoading] = useState(false);
+    
     const handleSubmit = () => {
-
-        setLoading(true);
-        
-        dispatch( signInRequest(email, password));
-        setLoading(false);                 
+        dispatch( signInRequest(email, password) );
     }
 
-    return(      
+    return(  
+        <>    
         <Background >            
                 <Container as={Animated.View} >
                     <Image source={logo} />
@@ -61,9 +63,13 @@ const SignIn = ({navigation}) => {
                         <ForgotPasswordText>Esqueceu a senha?</ForgotPasswordText>
                     </ForgotPassword>
                     
-                </Container>  
+                </Container>
+                <HideWithKeyboard>
+                    <Sysdev/>
+                </HideWithKeyboard>
+                
         </Background>  
-        
+        </>
     );
 }
 

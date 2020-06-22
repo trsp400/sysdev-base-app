@@ -15,6 +15,14 @@ export default ( isSigned = false ) =>  createAppContainer(
         }),
         App: createBottomTabNavigator({
             Dashboard
+        }, {
+            tabBarOptions: {
+                style :{
+                    backgroundColor: '#268030',
+                    paddingBottom: 10,
+                    
+                }
+            }
         }),
     }, {
         initialRouteName: isSigned == true ? 'App' : 'Sign'

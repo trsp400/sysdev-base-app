@@ -8,7 +8,7 @@ const Input = ({ style, icon, ...rest }, ref) => {
     return (
         <Container style={ style }>
             { Icon && <Icon name={icon} size={20} color="rgba(255,255,255,0.6)" ></Icon> }
-            <TInput { ...rest } ref={ ref } />
+            <TInput { ...rest }  ref={ ref } />
         </Container>
     );
 }
@@ -24,4 +24,4 @@ Input.defaultProps = {
 }
 
 
-export default React.forwardRef(Input)
+export default forwardRef(Input)

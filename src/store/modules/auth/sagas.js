@@ -4,7 +4,7 @@ import { Alert } from 'react-native';
 // import history from '~/services/history';
 import api from '~/services/api';
 
-import {signInSuccess, signFailure} from './actions';
+import {signInSuccess, signFailure, resetPasswordSuccess} from './actions';
 
 export function* signIn({ payload, navigation }) {
     try 
@@ -18,7 +18,7 @@ export function* signIn({ payload, navigation }) {
 
         const { token, user } = response.data;
 
-        yield put(signInSuccess(token, email))
+        yield put(signInSuccess(token, user))
         
 
         // navigation.navigate('/dashboard')

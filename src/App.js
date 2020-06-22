@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default function App() {
 
-    AsyncStorage.clear();
+    
 
     const signed = useSelector(state => state.auth.signed);
     const Routes = createRouter(signed)
