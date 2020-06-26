@@ -4,7 +4,7 @@ import { Alert } from 'react-native';
 // import history from '~/services/history';
 import api from '~/services/api';
 
-import {signInSuccess, signFailure, resetPasswordSuccess} from './actions';
+import {signInSuccess, signFailure} from './actions';
 
 export function* signIn({ payload, navigation }) {
     try 

@@ -1,21 +1,15 @@
 import React from 'react';
 import { View, StatusBar, Text, Button } from 'react-native';
-import Background from '~/components/Background/index';
+import Background from '~/components/Background';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-const Dashboard =  () => {
+const DashboardAdmin =  () => {
 
-    AsyncStorage.clear();
     
-    const handlePress = async () => {
-        const auth = await AsyncStorage.getItem("persist:embaixada_do_bem")
-        .then( res => {
-            console.log(JSON.parse(res))
-        })
-        .catch( err => {
-            console.log(err)
-        });
+    AsyncStorage.clear();
+    const handlePress = () => {
+       
     }
 
     return(
@@ -32,4 +26,6 @@ const Dashboard =  () => {
     )
 }
 
-export default Dashboard;
+
+
+export default DashboardAdmin;

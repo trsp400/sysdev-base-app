@@ -41,9 +41,9 @@ const SignIn = ({navigation}) => {
                             autoCapitalize="none" 
                             placeholder="Digite seu usuário ou e-mail" 
                             returnKeyType="next" 
-                            onSubmitEditing={ () => passwordRef.current.focus() } 
+                            onSubmitEditing={ () => passwordRef.current.focus() }
                             value={email}
-                            onChangeText={ setEmail }                            
+                            onChangeText={ setEmail }                        
                         />
                         <FormInput 
                             icon="lock-outline" 

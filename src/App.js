@@ -9,10 +9,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default function App() {
 
-    
-
     const signed = useSelector(state => state.auth.signed);
-    const Routes = createRouter(signed)
-
+    const admin  = useSelector(state => state.auth.admin);
+    const Routes = createRouter(signed, admin);
+    console.log(admin);
     return <Routes />
 }
