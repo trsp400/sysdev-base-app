@@ -1,19 +1,18 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import { View, StatusBar, Text } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Background from '~/components/Background';
-
+import UserPicture from '../../components/UserPicture';
+import {Container, DescriptionName} from './styles';
 export default function DashboardUser()  {
 
-    // AsyncStorage.clear();
-
     return (
-        <>
-            <StatusBar backgroundColor="white" barStyle="dark-content"/>
-            <View/>
-        </>
+        <Container>
+            <DescriptionName>Olá Thiago</DescriptionName>
+            <StatusBar backgroundColor="#FFF" barStyle="dark-content"/>
+            <UserPicture/>
+            <View style={{backgroundColor: "#FFF"}}/>
+        </Container>
     );
 };
 

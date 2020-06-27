@@ -9,7 +9,6 @@ import { Container, Form, FormInput, SubmitButton, ForgotPassword ,ForgotPasswor
 import Background from '~/components/Background';
 
 import api from '~/services/api';
-import auth from '~/store/modules/auth/reducer';
 
 const ResetPassword = ({ navigation }) => {
 

@@ -21,7 +21,7 @@ export default ( isSigned = false, admin ) =>  createAppContainer(
         }, {
             tabBarOptions: {
                 style :{
-                    backgroundColor: '#268030',
+                    backgroundColor: '#50a45a',
                     paddingBottom: 10,
                 }
             }
@@ -35,7 +35,7 @@ export default ( isSigned = false, admin ) =>  createAppContainer(
                 activeTintColor: '#FFF',
                 inactiveTintColor: 'rgba(255,255,255, 0.5)',
                 style :{
-                    backgroundColor: '#2E8B57',
+                    backgroundColor: '#268030',
                     paddingBottom: 10,
                     height: 65
                 },

@@ -8,10 +8,9 @@ export default function Profile() {
     
     
     return (
-        <Background>
-            <StatusBar backgroundColor="#50a45a" barStyle="dark-content"/>
+        <>
             <View/>
-        </Background>
+        </>
     );
 }
 
