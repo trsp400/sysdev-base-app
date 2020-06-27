@@ -8,8 +8,8 @@ export default function DashboardUser()  {
 
     return (
         <Container>
-            <DescriptionName>Olá Thiago</DescriptionName>
             <StatusBar backgroundColor="#FFF" barStyle="dark-content"/>
+                   
             <UserPicture/>
             <View style={{backgroundColor: "#FFF"}}/>
         </Container>
