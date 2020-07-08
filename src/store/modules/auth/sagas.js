@@ -15,13 +15,13 @@ export function* signIn({ payload, navigation }) {
             email,
             password,
         });
-
         const { token, user } = response.data;
+        
+        api.defaults.headers.Authorization = `Bearer ${token}`;
 
+        console.log(api.defaults.headers.Authorization);
         yield put(signInSuccess(token, user))
         
-
-        // navigation.navigate('/dashboard')
     } 
     catch(err) {
         
@@ -41,5 +41,6 @@ export function setToken({payload}) {
 }
 
 export default all([
+    takeLatest('persist/REHYDRATE', setToken),
     takeLatest('@auth/SIGN_IN_REQUEST', signIn)
 ])

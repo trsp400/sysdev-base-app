@@ -8,6 +8,8 @@ import ResetPassword from './pages/ResetPassword';
 import DashboardAdmin from '~/pages/DashboardAdmin';
 import DashboardUser from '~/pages/DashboardUser';
 import Profile from '~/pages/Profile';
+import Registers from '~/pages/Registers';
+import Contact from '~/pages/Contact';
 
 export default ( isSigned = false, admin ) =>  createAppContainer(
     createSwitchNavigator({
@@ -16,14 +18,20 @@ export default ( isSigned = false, admin ) =>  createAppContainer(
             ResetPassword            
         }),
         App: admin == true ? createBottomTabNavigator({
-            DashboardAdmin,
-            Profile
+            DashboardAdmin,            
+            Registers,
+            Profile,
+            Contact
         }, {
             tabBarOptions: {
+                keyboardHidesTabBar: true,
+                activeTintColor: '#FFF',
+                inactiveTintColor: 'rgba(255,255,255, 0.5)',
                 style :{
-                    backgroundColor: '#50a45a',
+                    backgroundColor: '#268030',
                     paddingBottom: 10,
-                }
+                    height: 65
+                },
             }
         }) : 
         createBottomTabNavigator({

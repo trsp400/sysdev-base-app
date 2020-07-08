@@ -1,5 +1,5 @@
 import  React, {  forwardRef,useState } from 'react';
-import { Image, Text, Animated } from 'react-native';
+import { Image, Text, Animated, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Background from '~/components/Background';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';

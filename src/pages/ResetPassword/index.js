@@ -1,5 +1,5 @@
 import  React, { useRef, useState } from 'react';
-import { Image, Text, Alert, Keyboard } from 'react-native';
+import { Image, Text, Alert, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
@@ -59,68 +59,73 @@ const ResetPassword = ({ navigation }) => {
         });                
     }
 
-    return(      
-        <Background onPress={Keyboard.dismiss}>            
-            <Container >
-                <Image source={logo} />
-                <Text style={{ fontSize: 20, marginTop: 15, marginBottom: -35, color: "#FFF" }}>Redefina sua Senha</Text>
-                <Form>
-                    <FormInput 
-                        icon="person" 
-                        autoCorret={false} 
-                        keyboardType="numeric"
-                        autoCapitalize="none" 
-                        placeholder="CPF" 
-                        returnKeyType="next"                         
-                        onSubmitEditing={ () => emailRef.current.focus() }
-                        value={cpf}
-                        onChangeText={ setCpf}
-                    />
-                    <FormInput 
-                        icon="email" 
-                        autoCorret={false}
-                        autoCapitalize="none"
-                        placeholder="Digite o e-mail de sua conta" 
-                        onSubmitEditing={ () => passwordRef.current.focus() }
-                        ref={emailRef}
-                        returnKeyType="next"
-                        value={email}
-                        onChangeText={ setEmail }
-                    />
-                    <FormInput 
-                        icon="lock-outline"
-                        secureTextEntry
-                        placeholder="Nova Senha" 
-                        onSubmitEditing={ () => confirmPasswordRef.current.focus() }
-                        ref={passwordRef}
-                        value={password}
-                        returnKeyType="next"
-                        onChangeText={ setPassword }
-                    />
-                    <FormInput
-                        icon="lock-outline"
-                        secureTextEntry
-                        placeholder="Confirmar Senha" 
-                        ref={confirmPasswordRef}
-                        value={confirmPassword}
-                        returnKeyType="send"
-                        onChangeText={ setConfirmPassword }
-                    />
-                    <LinearGradient colors={['#7a1fa0', '#7542ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} ><SubmitButton loading={loading} onPress={ handleSubmit } >Mudar a Senha</SubmitButton></LinearGradient>    
-                </Form>
-                
-                <ForgotPassword onPress={ () => navigation.navigate('SignIn') } >
-                    <ForgotPasswordText>Realizar Login</ForgotPasswordText>
-                </ForgotPassword>
-                
-            </Container>
-
-            <HideWithKeyboard>
-                <Sysdev/>
-            </HideWithKeyboard>
-            
+    return(
         
-        </Background>
+            <Background style={{flex: 1}}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}> 
+                <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
+                         
+                <Container style={{flex: 1}}>
+                    <Image source={logo} />
+                    <Text style={{ fontSize: 20, marginTop: 15, marginBottom: -35, color: "#FFF" }}>Redefina sua Senha</Text>
+                    <Form>
+                        <FormInput 
+                            icon="person" 
+                            autoCorret={false} 
+                            keyboardType="numeric"
+                            autoCapitalize="none" 
+                            placeholder="CPF" 
+                            returnKeyType="next"                         
+                            onSubmitEditing={ () => emailRef.current.focus() }
+                            value={cpf}
+                            onChangeText={ setCpf}
+                        />
+                        <FormInput 
+                            icon="email" 
+                            autoCorret={false}
+                            autoCapitalize="none"
+                            placeholder="Digite o e-mail de sua conta" 
+                            onSubmitEditing={ () => passwordRef.current.focus() }
+                            ref={emailRef}
+                            returnKeyType="next"
+                            value={email}
+                            onChangeText={ setEmail }
+                        />
+                        <FormInput 
+                            icon="lock-outline"
+                            secureTextEntry
+                            placeholder="Nova Senha" 
+                            onSubmitEditing={ () => confirmPasswordRef.current.focus() }
+                            ref={passwordRef}
+                            value={password}
+                            returnKeyType="next"
+                            onChangeText={ setPassword }
+                        />
+                        <FormInput
+                            icon="lock-outline"
+                            secureTextEntry
+                            placeholder="Confirmar Senha" 
+                            ref={confirmPasswordRef}
+                            value={confirmPassword}
+                            returnKeyType="send"
+                            onChangeText={ setConfirmPassword }
+                        />
+                        <LinearGradient colors={['#7a1fa0', '#7542ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} ><SubmitButton loading={loading} onPress={ handleSubmit } >Mudar a Senha</SubmitButton></LinearGradient>    
+                    </Form>
+                    
+                    <ForgotPassword onPress={ () => navigation.navigate('SignIn') } >
+                        <ForgotPasswordText>Realizar Login</ForgotPasswordText>
+                    </ForgotPassword>
+                    
+                </Container>
+
+                <HideWithKeyboard>
+                    <Sysdev/>
+                </HideWithKeyboard>
+                
+                </KeyboardAvoidingView>
+                </TouchableWithoutFeedback>
+            </Background>
         
     );
 }

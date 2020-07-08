@@ -1,4 +1,5 @@
 import React from 'react';
+navigator.geolocation = require('@react-native-community/geolocation');
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import {  StatusBar } from 'react-native';

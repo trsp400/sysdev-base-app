@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
 
@@ -6,9 +5,7 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height)
 
 const marginTop = screenHeight - 700;
-let margin = screenWidth - 360;
-
-screenWidth < 400 ? margin = screenWidth -340 : margin = 20
+const margin = screenWidth - 360;
 
 const theme = {
     margin: margin,
@@ -22,7 +19,7 @@ export const Header = styled.View`
     flex-direction: row;
     justify-content: space-between;
     margin-top: 30px;
-    /* margin-right: 20px; */
+    
 `;
 export const Descriptions = styled.View`
     margin-left: 10px;

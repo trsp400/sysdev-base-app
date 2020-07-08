@@ -6,7 +6,7 @@ export default reducers => {
         {
             key: 'embaixada_do_bem',
             storage: AsyncStorage,
-            whitelist: ['auth']
+            whitelist: ['auth', 'user']
         },
         reducers
     );
