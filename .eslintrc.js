@@ -24,13 +24,7 @@ module.exports = {
       {
         extensions: ['.jsx', '.js'],
       },
-    ],setting: {
-      "import/resolver" : {
-        "babel-plugin-root-import" : {
-          rootPathSuffix: "src"
-        }
-      }
-    },
+    ],
 
     'import/prefer-default-export': 'off',
     'react/state-in-constructor': 'off',
@@ -40,5 +34,11 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-console': 'off',
   },
-
+  settings: {
+    'import/resolver': {
+      'babel-plugin-root-import': {
+        rootPathSuffix: 'src',
+      },
+    },
+  },
 };

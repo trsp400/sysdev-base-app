@@ -8,7 +8,6 @@ import {
   View,
   ScrollView,
   Platform,
-  Alert,
 } from 'react-native';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -27,23 +26,19 @@ export default function Profile() {
     dispatch(signOut());
   };
 
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('date');
+  const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
+    console.log(selectedDate);
+    // console.log(date);
     setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-  };
-
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
+    setDate(selectedDate);
+    console.log(date.toUTCString());
   };
 
   const showDatepicker = () => {
-    showMode('date');
+    setShow(true);
   };
 
   return (
@@ -118,26 +113,29 @@ export default function Profile() {
               />
               <FormInput
                 icon="date-range"
-                autoCorret={false}
                 keyboardType="numeric"
                 autoCapitalize="none"
                 placeholder="Data de nascimento"
                 returnKeyType="next"
-                onPress={showDatepicker}
-                onSubmitEditing={showDatepicker}
+                onFocus={showDatepicker}
+                value={
+                  date.getFullYear() < 2010
+                    ? `${date.getDate()}/${
+                        date.getMonth() + 1
+                      }/${date.getFullYear()}`
+                    : null
+                }
                 // ref={emailRef}
                 // returnKeyType="next"
                 // value={email}
-                // onChangeText={ setEmail }
               />
               {show && (
                 <DateTimePicker
-                  style={{ flex: 1, zIndex: 999 }}
                   testID="dateTimePicker"
                   value={date}
-                  mode={mode}
+                  mode="date"
                   is24Hour
-                  display="spinner"
+                  display="default"
                   onChange={onChange}
                 />
               )}
@@ -216,6 +214,10 @@ export default function Profile() {
     </KeyboardAvoidingView>
   );
 }
+
+const formatDate = (date) => {
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+};
 
 Profile.navigationOptions = {
   tabBarLabel: 'Meu Perfil',
