@@ -1,12 +1,8 @@
-
 export function signInRequest(email, password) {
-    
-  return {      
+  return {
     type: '@auth/SIGN_IN_REQUEST',
     payload: { email, password },
-    
   };
-  
 }
 
 export function signInSuccess(token, user) {
@@ -34,5 +30,3 @@ export function signOut() {
     type: '@auth/SIGN_OUT',
   };
 }
-
-  
