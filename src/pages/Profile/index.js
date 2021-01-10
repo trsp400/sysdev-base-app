@@ -33,7 +33,6 @@ export default function Profile() {
   const onChange = (event, selectedDate) => {
     setShow(Platform.OS === 'ios');
     setDate(selectedDate);
-    console.log(date.toUTCString());
   };
 
   const showDatepicker = () => {
@@ -219,9 +218,9 @@ export default function Profile() {
   );
 }
 
-// const formatDate = date => {
-//   return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-// };
+const formatDate = date => {
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+};
 
 Profile.navigationOptions = {
   tabBarLabel: 'Meu Perfil',

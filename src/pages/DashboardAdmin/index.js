@@ -22,7 +22,7 @@ import {
   Header,
 } from './styles';
 
-export default function DashboardUser() {
+export default function DashboardUser({ navigation, data }) {
   Geocoder.init('AIzaSyCW4nTNB9yHvvjDpVqYik7QbC15ZIEXSoE');
 
   // AsyncStorage.clear();
@@ -72,7 +72,6 @@ export default function DashboardUser() {
           setLoading(true);
           Geolocation.getCurrentPosition(
             ({ coords }) => {
-              console.log(coords);
               const { latitude: lat, longitude: long } = coords;
               setLatitude(lat);
               setLongitude(long);
