@@ -8,6 +8,7 @@ import {
   View,
   ScrollView,
   Platform,
+  Alert,
 } from 'react-native';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -30,8 +31,6 @@ export default function Profile() {
   const [show, setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
-    console.log(selectedDate);
-    // console.log(date);
     setShow(Platform.OS === 'ios');
     setDate(selectedDate);
     console.log(date.toUTCString());
@@ -39,6 +38,10 @@ export default function Profile() {
 
   const showDatepicker = () => {
     setShow(true);
+  };
+
+  const handleSubmit = () => {
+    Alert.alert('oiews');
   };
 
   return (
@@ -70,7 +73,9 @@ export default function Profile() {
               style={{ width: 80, height: 80, alignSelf: 'center' }}
             >
               <Avatar
-                source={{ uri: 'https://api.adorable.io/avatar/200/sysdev' }}
+                source={{
+                  uri: 'https://ui-avatars.com/api/?name=Thiago+Robles',
+                }}
               />
             </TouchableOpacity>
 
@@ -120,9 +125,8 @@ export default function Profile() {
                 onFocus={showDatepicker}
                 value={
                   date.getFullYear() < 2010
-                    ? `${date.getDate()}/${
-                        date.getMonth() + 1
-                      }/${date.getFullYear()}`
+                    ? `${date.getDate()}/${date.getMonth() +
+                        1}/${date.getFullYear()}`
                     : null
                 }
                 // ref={emailRef}
@@ -203,7 +207,7 @@ export default function Profile() {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
               >
-                <SubmitButton onPress={showDatepicker}>
+                <SubmitButton onPress={handleSubmit}>
                   Atualizar Perfil
                 </SubmitButton>
               </LinearGradient>
@@ -215,9 +219,9 @@ export default function Profile() {
   );
 }
 
-const formatDate = (date) => {
-  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-};
+// const formatDate = date => {
+//   return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+// };
 
 Profile.navigationOptions = {
   tabBarLabel: 'Meu Perfil',

@@ -22,7 +22,7 @@ import {
   Header,
 } from './styles';
 
-export default function DashboardUser({ navigation, data }) {
+export default function DashboardUser() {
   Geocoder.init('AIzaSyCW4nTNB9yHvvjDpVqYik7QbC15ZIEXSoE');
 
   // AsyncStorage.clear();
@@ -34,9 +34,9 @@ export default function DashboardUser({ navigation, data }) {
   const [currentPosition, setCurrentPosition] = useState('unknown');
   const [name, setName] = useState('');
 
-  const user = useSelector((state) => state.user.profile);
+  const user = useSelector(state => state.user.profile);
 
-  const storeLocation = async (value) => {
+  const storeLocation = async value => {
     try {
       await AsyncStorage.setItem('@location', value);
     } catch (err) {
@@ -72,25 +72,26 @@ export default function DashboardUser({ navigation, data }) {
           setLoading(true);
           Geolocation.getCurrentPosition(
             ({ coords }) => {
-              const { latitude, longitude } = coords;
-              setLatitude(latitude);
-              setLongitude(longitude);
-              console.log(latitude, longitude);
+              console.log(coords);
+              const { latitude: lat, longitude: long } = coords;
+              setLatitude(lat);
+              setLongitude(long);
+              console.log(lat, long);
 
-              Geocoder.from({ lat: latitude, lng: longitude })
-                .then((res) => {
+              Geocoder.from({ lat, lng: long })
+                .then(res => {
                   const address = res.results[0].formatted_address;
                   const city = address.split('-');
                   const neighborhood = city[1].split(',');
                   setCurrentPosition(neighborhood[0]);
                   storeLocation(neighborhood[0]);
                 })
-                .catch((err) => {
+                .catch(err => {
                   console.log(err);
                 });
               setLoading(false);
             },
-            (err) => {
+            err => {
               console.log(err);
               Alert.alert(
                 'OPS!',
@@ -108,10 +109,10 @@ export default function DashboardUser({ navigation, data }) {
             { enableHighAccuracy: false, timeout: 5000, maximumAge: 1000 }
           );
         } else {
-          alert('Permission Denied');
+          Alert.alert('Permission Denied');
         }
       } catch (err) {
-        alert('err', err);
+        Alert.alert('err', err);
         console.warn(err);
       }
     }
@@ -138,7 +139,7 @@ export default function DashboardUser({ navigation, data }) {
             style={{ flexDirection: 'row' }}
             onPress={handleLocation}
           >
-            {lastPosition != 'unknown' ? (
+            {lastPosition !== 'unknown' ? (
               <DescriptionLocation>{lastPosition}</DescriptionLocation>
             ) : (
               <DescriptionLocation>Atualizar localização!</DescriptionLocation>

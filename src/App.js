@@ -1,10 +1,8 @@
-import React, {useEffect} from 'react';
-import {Platform, StatusBar} from 'react-native';
-import {useSelector} from 'react-redux';
-
-import createRouter from './routes';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import SplashScreen from 'react-native-splash-screen';
+import createRouter from './routes';
 
 import '~/config/ReactotronConfig';
 
